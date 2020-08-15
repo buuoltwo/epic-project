@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+import Header from './component/Header'
+import Footer from './component/Footer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
+// import About from './page/About'
+// import History from './page/History'
+// import Home from './page/Home'
+const About = React.lazy(() => import('./page/About'))
+const History = React.lazy(() => import('./page/History'))
+const Home = React.lazy(() => import('./page/Home'))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header></Header>
+        <main>
+          {/* main */}
+          <Suspense fallback={<p>loading..</p>}>
+            <Switch>
+              {/* <Route exact path='/' children={Home}></Route> */}
+              <Route exact path='/' component={Home}></Route>
+              <Route path='/history' component={History} />
+              <Route path='/about'><About /></Route>
+            </Switch>
+          </Suspense>
+        </main>
+        <Footer></Footer>
+      </Router>
+    </>
   );
 }
 
