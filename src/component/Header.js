@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../logo.svg'
 
@@ -36,6 +36,8 @@ export default function Component() {
         <StyledNavLink to="/history" activeClassName='active'>历史</StyledNavLink>
         <StyledNavLink to="/about" activeClassName='active'>关于我</StyledNavLink>
       </nav>
+      <button><Link to="/login">登录</Link></button>
+      <button><Link to="/register">注册</Link></button>
     </StyledHeader>
   )
 }

@@ -15,6 +15,9 @@ import {
 const About = React.lazy(() => import('./page/About'))
 const History = React.lazy(() => import('./page/History'))
 const Home = React.lazy(() => import('./page/Home'))
+const Login = React.lazy(() => import('./page/Login'))
+const Register = React.lazy(() => import('./page/Register'))
+
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
               <Route exact path='/' component={Home}></Route>
               <Route path='/history' component={History} />
               <Route path='/about'><About /></Route>
+              <Route path='/login'><Login /></Route>
+              <Route path='/register'><Register /></Route>
             </Switch>
           </Suspense>
         </main>
