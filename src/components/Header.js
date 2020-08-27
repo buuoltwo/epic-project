@@ -6,12 +6,11 @@ import { Button } from "antd";
 
 const Div = styled.nav`
   background-color: rgb(33,44,61);
-  padding: 26px;
+  padding: 18px;
 `;
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-
 `;
 const StyledNL = styled(NavLink)`
   margin-left: 15px;
