@@ -44,6 +44,12 @@ const AuthTest = observer(() => {
     console.log('Failed:', errorInfo);
   };
 
+  const validateUsername = (rule, value) => {
+    if(/\W/.test(value)) return Promise.reject('请使用字母数字下划线!');
+    if(value.length < 4 || value.length > 10) return Promise.reject('在4到10之间！');
+    return Promise.resolve();
+  }
+
   return (
     <Wrapper>
       <h3>请注册您的账号</h3>
@@ -64,6 +70,10 @@ const AuthTest = observer(() => {
             required: true,
             message: 'Please input your username!',
           },
+          {
+            // https://ant.design/components/form-cn/#Rule
+            validator: validateUsername
+          }
         ]}
       >
         <Input />
@@ -77,6 +87,11 @@ const AuthTest = observer(() => {
             required: true,
             message: 'Please input your password!',
           },
+          {
+            min:4,
+            max: 10,
+            message:"在4到10位之间",
+          }
         ]}
       >
         <Input.Password />
