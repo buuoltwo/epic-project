@@ -25,6 +25,12 @@ const Auth = {
       user.logIn().then( (user)=> resolve(user))
         .catch(err=> reject(err))
     });
+  },
+  getCurrentUser() {
+    return AV.User.current();
+  },
+  logOut(){
+    AV.User.logOut();
   }
 };
 

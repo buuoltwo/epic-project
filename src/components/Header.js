@@ -3,6 +3,8 @@ import Logo from '../logo.svg';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from "antd";
+import useStores from '../stores';
+import { observer } from 'mobx-react';
 
 const Div = styled.nav`
   background-color: rgb(33,44,61);
@@ -25,20 +27,31 @@ const DivAuth = styled.div`
   margin-left: auto;
 `;
 
-export default function() {
+const Header = observer(function () {
+  const { UserStore, AuthStore } = useStores();
   return (
     <Div>
       <Nav>
-        <img src={Logo} style={{height:"40px"}} alt="here is a logo.."></img>
+        <img src={Logo} style={{ height: "40px" }} alt="here is a logo.."></img>
         <StyledNL activeclassname="active" exact to='/'>首页</StyledNL>
         <StyledNL activeclassname="active" to='/history'>历史</StyledNL>
         <StyledNL activeclassname="active" to='/about'>关于我</StyledNL>
 
-      <DivAuth className="auth">
-        <Button ghost href={'/login'}>登录</Button>
-        <Button ghost style={{marginLeft:"15px"}} href={'/register'}>注册</Button>
-      </DivAuth>
+        <DivAuth>
+          {
+            UserStore.currentUser ? <>
+              <Button type="link">{UserStore.currentUser.attributes.username}</Button>
+              <Button ghost style={{ marginLeft: "15px" }} onClick={() => AuthStore.logOut()}>登出</Button>
+            </> : <>
+                <Button ghost href={'/login'}>登录</Button>
+                <Button ghost style={{ marginLeft: "15px" }} href={'/register'}>注册</Button>
+              </>
+          }
+
+        </DivAuth>
       </Nav>
     </Div>
   )
-}
+});
+
+export default Header;
