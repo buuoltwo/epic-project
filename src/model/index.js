@@ -53,6 +53,23 @@ const Uploader = {
         })
     });
     return p3;
+  },
+  find({limit=10, page=0}) {
+    // const query = new AV.Query("Imghistory");
+    //与先前创建的表名称一致..查询..
+    const query = new AV.Query("Imglist");
+    query.include("owner");
+    //上面这句话是必须的，藉此才能看到username这一属性..why..
+    query.equalTo("owner", AV.User.current());
+    query.limit(limit);
+    query.skip(page*limit);
+    query.descending("createdAt");
+    let p5 = new Promise((resolve, reject) => {
+      query.find().then( (historyItem) => {
+        resolve(historyItem);
+      }).catch( err => reject(err))
+    });
+    return p5;
   }
 }
 
