@@ -10,3 +10,6 @@ class testStore {
 };
 
 export default new testStore();
+
+// console..
+// window.stores.userStores....

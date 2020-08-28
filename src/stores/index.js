@@ -3,17 +3,20 @@ import { createContext, useContext } from 'react';
 import TestStore from './about.test';
 import AuthStore from './authStore';
 import UserStore from './userStore';
+import ImgStore from './imgStore';
 
 const context = createContext( {
   TestStore,
   AuthStore,
-  UserStore
+  UserStore,
+  ImgStore
 });
 
 window.stores = {
   TestStore,
   AuthStore,
-  UserStore
+  UserStore,
+  ImgStore
 }
 
 //3

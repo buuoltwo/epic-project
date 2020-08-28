@@ -34,4 +34,26 @@ const Auth = {
   }
 };
 
-export { Auth };
+const Uploader = {
+  add({filename:filename, file:file}) {
+    // console.log("model..")
+    const imglist = new AV.Object("Imglist");
+    imglist.set('filename', filename);
+    imglist.set('owner', AV.User.current());
+    console.log(filename);
+    console.log(file);
+    let avFile = new AV.File(filename, file);
+    imglist.set('image', avFile);
+    let p3 = new Promise( (resolve, reject) => {
+      imglist.save()
+        .then((serverfile)=>resolve(serverfile))
+        .catch(err => {
+          reject(err);
+          console.log(err);
+        })
+    });
+    return p3;
+  }
+}
+
+export { Auth, Uploader };
