@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import { Auth } from '../model';
 import UserStore from './userStore';
+import ImgStore from './imgStore';
 
 class AuthStore {
   @observable username = '';
@@ -38,6 +39,7 @@ class AuthStore {
   };
   @action logOut() {
     Auth.logOut();
+    ImgStore.resetImg();
     UserStore.pullUser();
   }
 }

@@ -35,7 +35,7 @@ const Auth = {
 };
 
 const Uploader = {
-  add({filename:filename, file:file}) {
+  add({filename, file}) {
     // console.log("model..")
     const imglist = new AV.Object("Imglist");
     imglist.set('filename', filename);

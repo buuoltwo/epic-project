@@ -15,7 +15,7 @@ const Component = observer(function() {
     if(ref.current.files.length > 0) {
       // ImgStore.setFilename(ref.current.files.name);
       ImgStore.setFilename(ref.current.files[0].name);
-      ImgStore.setFile(ref.current.files);
+      // ImgStore.setFile(ref.current.files);
       ImgStore.setFile(ref.current.files[0]);
       ImgStore.add()
         .then((serverfile) => {
