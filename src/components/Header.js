@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../logo.svg';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from "antd";
+import { Button, message } from "antd";
 import useStores from '../stores';
 import { observer } from 'mobx-react';
 
@@ -41,7 +41,7 @@ const Header = observer(function () {
           {
             UserStore.currentUser ? <>
               <Button type="link">{UserStore.currentUser.attributes.username}</Button>
-              <Button ghost style={{ marginLeft: "15px" }} onClick={() => AuthStore.logOut()}>登出</Button>
+              <Button ghost style={{ marginLeft: "15px" }} onClick={() => {AuthStore.logOut();message.success("登出成功");}}>登出</Button>
             </> : <>
                 <Button ghost href={'/login'}>登录</Button>
                 <Button ghost style={{ marginLeft: "15px" }} href={'/register'}>注册</Button>

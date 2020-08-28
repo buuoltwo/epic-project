@@ -42,6 +42,7 @@ const AuthTest = observer(() => {
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
+    message.error("表单提交异常");
   };
 
   const validateUsername = (rule, value) => {
