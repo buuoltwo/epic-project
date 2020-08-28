@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from 'mobx-react';
 import useStores from '../stores'
-import { Upload, message, Button } from 'antd';
+import { Upload, message, Button, Spin } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
@@ -57,16 +57,18 @@ const Component = observer(function () {
   };
   return (
     <>
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-          band files
+      <Spin tip="上传中..." spinning={ ImgStore.isLoading }>
+        <Dragger {...props}>
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">
+            Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+            band files
     </p>
-      </Dragger>
+        </Dragger>
+      </Spin>
       {
         ImgStore.serverfile ? <Div>
           <h2>上传结果</h2>
@@ -75,7 +77,7 @@ const Component = observer(function () {
             {/* 控制台输入stores慢慢找 */}
             <dd><Button target="_blank" href={ImgStore.serverfile.attributes.image.attributes.url}>{ImgStore.serverfile.attributes.image.attributes.url}</Button></dd>
             <dt>缩略图</dt>
-      <dd><img alt="缩略图" src={ImgStore.serverfile.attributes.image.attributes.url} style={{width:"45%"}}></img></dd>
+            <dd><img alt="缩略图" src={ImgStore.serverfile.attributes.image.attributes.url} style={{ width: "45%" }}></img></dd>
           </dl>
         </Div> : null
 
