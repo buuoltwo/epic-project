@@ -25,10 +25,10 @@ const Component = observer(function () {
         message.error("上传的格式为.gif | .png | .jpg | .jpeg | .svg");
         return false;
       }
-      // else if (!UserStore.currentUser) {
-      //   message.error("请先登录再进行操作");
-      //   return false;
-      // }
+      else if (!UserStore.currentUser) {
+        message.error("请先登录再进行操作");
+        return false;
+      }
       else if (file.size > 1024 * 1024) {
         message.error("上传图片大小不超过1M");
         return false;
