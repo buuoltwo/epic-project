@@ -33,8 +33,8 @@ const Header = observer(function () {
     <Div>
       <Nav>
         <img src={Logo} style={{ height: "40px" }} alt="here is a logo.."></img>
-        <StyledNL activeclassname="active" exact to='/'>首页</StyledNL>
-        <StyledNL activeclassname="active" to='/history'>历史</StyledNL>
+        <StyledNL activeclassname="active" exact to='/'>在线图床</StyledNL>
+        <StyledNL activeclassname="active" to='/history'>上传历史</StyledNL>
         <StyledNL activeclassname="active" to='/about'>关于我</StyledNL>
 
         <DivAuth>
