@@ -65,12 +65,13 @@ const Uploader = {
     query.skip(page*limit);
     query.descending("createdAt");
     let p5 = new Promise((resolve, reject) => {
-      query.find().then( (historyItem) => {
-        resolve(historyItem);
+      query.find().then( (historyList) => {
+        resolve(historyList);
       }).catch( err => reject(err))
     });
     return p5;
-  }
-}
+  },
+  
+};
 
 export { Auth, Uploader };
