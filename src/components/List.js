@@ -39,7 +39,8 @@ const Component = observer( () => {
           dataSource={HistoryStore.list}
           renderItem={item => (
             <List.Item key={item.id}>
-              testzzzzz
+              <img src={item.attributes.image.attributes.url} alt={item.attributes.image.attributes} style={{width:"120px",height:"100px",objectFit:"contain"}} />
+              <div>username:{item.attributes.owner.attributes.username}</div>
             </List.Item>
           )}
         >
